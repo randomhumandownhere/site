@@ -17,7 +17,8 @@ export default function Orph() {
                 .wave {
                     position: absolute;
                     animation: wave 2s ease-in-out infinite;
-                    right: 80px;
+                    right: 70px;
+                    top: -100px;
                 }
             `}</style>
             <div style={styles.div}>
