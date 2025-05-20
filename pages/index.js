@@ -42,6 +42,7 @@ import Onboard from '../components/index/cards/onboard'
 import Trail from '../components/index/cards/trail'
 import Scrapyard from '../components/index/cards/scrapyard'
 import Neighborhood from '../components/index/cards/neighborhood'
+import Orph from '../components/index/orph'
 /** @jsxImportSource theme-ui */
 
 function Page({
@@ -190,20 +191,48 @@ function Page({
           as="header"
           sx={{
             bg: 'dark',
+            backgroundColor: '#ff4747',
             pt: [5, 6],
-            pb: [2, 3],
+            pb: [4, 5],
             textAlign: 'left',
             position: 'relative',
-            overflowX: 'hidden'
+            overflowX: 'hidden',
+            overflowY: 'hidden'
           }}
         >
-          <BGImg
-            src={OuternetImgFile}
-            alt="Hack Clubbers gather in the great outdoors of Cabot, VT, for an experience unlike any other: Outernet. 📸 Photo by Matt Gleich, Hack Clubber in NH!"
-            priority
-            gradient="linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.45))"
-          />
           <Box
+            sx={{
+              width: '90vw',
+              maxWidth: [null, 'layout'],
+              position: 'relative',
+              mx: 'auto',
+              py: [4, 4, 4],
+              textShadow: 'text',
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between'
+            }}
+          >
+            <Heading>
+              <Text
+                as="p"
+                variant="title"
+                sx={{
+                  color: 'white',
+                  mb: [3, 4],
+                  zIndex: 1,
+                  textAlign: 'left',
+                  fontSize: ['42px', '52px', '64px'],
+                  lineHeight: 1.2,
+                  width: '100%'
+                }}
+              >
+                Welcome to Hack Club!
+              </Text>
+            </Heading>
+            <Orph />
+          </Box>
+          {/*<Box
             sx={{
               width: '90vw',
               maxWidth: [null, 'layout'],
@@ -298,37 +327,7 @@ function Page({
                 Sign Up: Private Island Hackathon
               </Button>
             </Heading>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: ['flex-start', 'flex-start', 'flex-end'],
-              marginRight: 2,
-              mt: [4, 3, 1]
-            }}
-          >
-            <Badge
-              as="a"
-              href="https://outernet.hackclub.com/"
-              target="_blank"
-              rel="noopener"
-              variant="pill"
-              sx={{
-                zIndex: '1',
-                bg: 'black',
-                color: 'white',
-                opacity: 1,
-                textDecoration: 'none',
-                fontWeight: 'normal',
-                ':hover': { opacity: 1 },
-                transition: '0.3s ease'
-                // mixBlendMode: 'multiply'
-              }}
-              title="📸 Photo by Matt Gleich, Hack Clubber in NH!"
-            >
-              Hackers at Outernet in Vermont
-            </Badge>
-          </Box>
+          </Box>*/}
         </Box>
         <Box as="section" sx={{ py: [4, 5, '82px'], color: 'black' }}>
           <Box
@@ -1287,9 +1286,9 @@ export async function getStaticProps() {
 
   let events = []
   try {
-    await fetch(
-      'https://events.hackclub.com/api/events/upcoming/'
-    ).then(res => res.json())
+    await fetch('https://events.hackclub.com/api/events/upcoming/').then(res =>
+      res.json()
+    )
   } catch (error) {
     console.error('Error fetching events:', error)
   }
